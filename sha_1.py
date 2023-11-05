@@ -44,3 +44,15 @@ class SHA1:
         return [
             self.padded_data[i: i + 64] for i in range(0, len(self.padded_data), 64)
         ]
+
+    def expand_block(self, block: bytes) -> list[int]:
+        """
+        Expands a 512-bit block into an 80-word message schedule.
+
+        :param block: A 512-bit block of data to be expanded.
+        :return: An expanded 80-word message schedule derived from the input block.
+        """
+        w = list(struct.unpack(">16L", block)) + [0] * 64
+        for i in range(16, 80):
+            w[i] = self.rotate((w[i - 3] ^ w[i - 8] ^ w[i - 14] ^ w[i - 16]), 1)
+        return w
