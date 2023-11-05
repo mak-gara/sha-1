@@ -33,3 +33,14 @@ class SHA1:
         padding = b"\x80" + b"\x00" * (63 - (len(self.input_message) + 8) % 64)
         padded_data = self.input_message + padding + struct.pack(">Q", 8 * len(self.input_message))
         return padded_data
+
+    def split_blocks(self) -> list[bytes]:
+        """
+        Splits the padded data into blocks of 64 bytes each.
+
+        :return: A list of byte blocks where each block is 64 bytes long, obtained from the padded data.
+        """
+
+        return [
+            self.padded_data[i: i + 64] for i in range(0, len(self.padded_data), 64)
+        ]
