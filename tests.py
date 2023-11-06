@@ -18,10 +18,18 @@ class SHA1TestCase(unittest.TestCase):
 
         input_messages = [
             "Hello World",
+
             "Cryptography for Developers",
-            "SHA-1",
-            "Keccak",
-            "Theta function"
+
+            "The National Institute of Standards and Technology (NIST) is an agency "
+            "of the United States Department of Commerce whose mission is to promote "
+            "American innovation and industrial competitiveness.",
+
+            "SHA-3 (Secure Hash Algorithm 3) is the latest member of the Secure Hash Algorithm family of standards",
+
+            "In mathematics, theta functions are special functions of several complex variables. They show up in many "
+            "topics, including Abelian varieties, moduli spaces, quadratic forms, and solitons. As Grassmann algebras, "
+            "they appear in quantum field theory."
         ]
 
         for message in input_messages:
